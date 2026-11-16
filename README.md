@@ -81,7 +81,7 @@ body:has(#g-rpg:checked) .card:not([data-genre*="rpg"]) { display: none; }
 
 ---
 
-## ➕ Как добавить игру
+## ➕ Как добавить игру?
 
 Скопируйте блок `<article class="card">` в `index.html` и измените:
 
