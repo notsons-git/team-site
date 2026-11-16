@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameShelf — Каталог видеоигр</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="logo">🎮 GameShelf</a>
+      <nav class="nav">
+        <a href="#catalog" class="nav__link">Каталог</a>
+        <a href="#favorites" class="nav__link">Избранное</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    
+    <section class="controls">
+      <!-- Поиск (чистый CSS-фильтр по чекбоксам не сделать, поэтому это просто поле) -->
+      <input type="search" class="search" placeholder="🔍 Поиск по названию...">
+
+      <!-- Фильтр по жанру через radio -->
+      <div class="genres">
+        <input type="radio" name="genre" id="g-all" class="genre-radio" checked>
+        <label for="g-all" class="genre-label">Все</label>
+
+        <input type="radio" name="genre" id="g-rpg" class="genre-radio">
+        <label for="g-rpg" class="genre-label">RPG</label>
+
+        <input type="radio" name="genre" id="g-action" class="genre-radio">
+        <label for="g-action" class="genre-label">Экшен</label>
+
+        <input type="radio" name="genre" id="g-adventure" class="genre-radio">
+        <label for="g-adventure" class="genre-label">Приключения</label>
+
+        <input type="radio" name="genre" id="g-platform" class="genre-radio">
+        <label for="g-platform" class="genre-label">Платформер</label>
+
+        <input type="radio" name="genre" id="g-sim" class="genre-radio">
+        <label for="g-sim" class="genre-label">Симулятор</label>
+      </div>
+    </section>
+
+    
+    <section class="grid" id="catalog">
+
+      <!-- Игра 1 -->
+      <article class="card" data-genre="rpg adventure">
+        <input type="checkbox" id="fav-1" class="fav-check">
+        <label for="fav-1" class="fav-btn">🤍</label>
+
+        <a href="#game-1" class="card__cover">🐺</a>
+        <div class="card__body">
+          <h3 class="card__title">The Witcher 3</h3>
+          <p class="card__meta">2015 · RPG, Приключения</p>
+          <div class="card__bottom">
+            <span class="rating">★ 9.8</span>
+          </div>
+        </div>
+
+        
+        <div class="modal" id="game-1">
+          <a href="#catalog" class="modal__overlay"></a>
+          <div class="modal__content">
+            <a href="#catalog" class="modal__close">✕</a>
+            <div class="modal__emoji">🐺</div>
+            <h2 class="modal__title">The Witcher 3</h2>
+            <p class="modal__year">2015 · CD Projekt Red</p>
+            <div class="modal__tags">
+              <span class="tag">RPG</span>
+              <span class="tag">Приключения</span>
+            </div>
+            <div class="modal__rating">★ 9.8</div>
+            <p class="modal__desc">
+              Эпическая ролевая игра в открытом мире. Геральт из Ривии ищет Цири
+              в мире, полном монстров и интриг.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      
+      <article class="card" data-genre="action adventure">
+        <input type="checkbox" id="fav-2" class="fav-check">
+        <label for="fav-2" class="fav-btn">🤍</label>
+
+        <a href="#game-2" class="card__cover">🤠</a>
+        <div class="card__body">
+          <h3 class="card__title">Red Dead Redemption 2</h3>
+          <p class="card__meta">2018 · Экшен, Приключения</p>
+          <div class="card__bottom">
+            <span class="rating">★ 9.7</span>
+          </div>
+        </div>
+
+        <div class="modal" id="game-2">
+          <a href="#catalog" class="modal__overlay"></a>
+          <div class="modal__content">
+            <a href="#catalog" class="modal__close">✕</a>
+            <div class="modal__emoji">🤠</div>
+            <h2 class="modal__title">Red Dead Redemption 2</h2>
+            <p class="modal__year">2018 · Rockstar Games</p>
+            <div class="modal__tags">
+              <span class="tag">Экшен</span>
+              <span class="tag">Приключения</span>
+            </div>
+            <div class="modal__rating">★ 9.7</div>
+            <p class="modal__desc">
+              История банды ковбоев на закате эпохи Дикого Запада.
+              Глубокий сюжет и невероятная детализация мира.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      
+      <article class="card" data-genre="action adventure">
+        <input type="checkbox" id="fav-3" class="fav-check">
+        <label for="fav-3" class="fav-btn">🤍</label>
+
+        <a href="#game-3" class="card__cover">🪓</a>
+        <div class="card__body">
+          <h3 class="card__title">God of War</h3>
+          <p class="card__meta">2018 · Экшен, Приключения</p>
+          <div class="card__bottom">
+            <span class="rating">★ 9.6</span>
+          </div>
+        </div>
+
+        <div class="modal" id="game-3">
+          <a href="#catalog" class="modal__overlay"></a>
+          <div class="modal__content">
+            <a href="#catalog" class="modal__close">✕</a>
+            <div class="modal__emoji">🪓</div>
+            <h2 class="modal__title">God of War</h2>
+            <p class="modal__year">2018 · Santa Monica Studio</p>
+            <div class="modal__tags">
+              <span class="tag">Экшен</span>
+              <span class="tag">Приключения</span>
+            </div>
+            <div class="modal__rating">★ 9.6</div>
+            <p class="modal__desc">
+              Кратос и его сын Атрей отправляются в опасное путешествие
+              по мирам северной мифологии.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      
+      <article class="card" data-genre="rpg action">
+        <input type="checkbox" id="fav-4" class="fav-check">
+        <label for="fav-4" class="fav-btn">🤍</label>
+
+        <a href="#game-4" class="card__cover">⚔️</a>
+        <div class="card__body">
+          <h3 class="card__title">Elden Ring</h3>
+          <p class="card__meta">2022 · RPG, Экшен</p>
+          <div class="card__bottom">
+            <span class="rating">★ 9.5</span>
+          </div>
+        </div>
+
+        <div class="modal" id="game-4">
+          <a href="#catalog" class="modal__overlay"></a>
+          <div class="modal__content">
+            <a href="#catalog" class="modal__close">✕</a>
+            <div class="modal__emoji">⚔️</div>
+            <h2 class="modal__title">Elden Ring</h2>
+            <p class="modal__year">2022 · FromSoftware</p>
+            <div class="modal__tags">
+              <span class="tag">RPG</span>
+              <span class="tag">Экшен</span>
+            </div>
+            <div class="modal__rating">★ 9.5</div>
+            <p class="modal__desc">
+              Открытый мир, созданный при участии Джорджа Мартина.
+              Испытание для настоящих искателей приключений.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      
+      <article class="card" data-genre="platform">
+        <input type="checkbox" id="fav-5" class="fav-check">
+        <label for="fav-5" class="fav-btn">🤍</label>
+
+        <a href="#game-5" class="card__cover">🦋</a>
+        <div class="card__body">
+          <h3 class="card__title">Hollow Knight</h3>
+          <p class="card__meta">2017 · Платформер</p>
+          <div class="card__bottom">
+            <span class="rating">★ 9.2</span>
+          </div>
+        </div>
+
+        <div class="modal" id="game-5">
+          <a href="#catalog" class="modal__overlay"></a>
+          <div class="modal__content">
+            <a href="#catalog" class="modal__close">✕</a>
+            <div class="modal__emoji">🦋</div>
+            <h2 class="modal__title">Hollow Knight</h2>
+            <p class="modal__year">2017 · Team Cherry</p>
+            <div class="modal__tags">
+              <span class="tag">Платформер</span>
+              <span class="tag">Метроидвания</span>
+            </div>
+            <div class="modal__rating">★ 9.2</div>
+            <p class="modal__desc">
+              Атмосферный метроидвания-платформер о маленьком рыцаре
+              в подземном королевстве насекомых.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      
+      <article class="card" data-genre="sim rpg">
+        <input type="checkbox" id="fav-6" class="fav-check">
+        <label for="fav-6" class="fav-btn">🤍</label>
+
+        <a href="#game-6" class="card__cover">🌾</a>
+        <div class="card__body">
+          <h3 class="card__title">Stardew Valley</h3>
+          <p class="card__meta">2016 · Симулятор, RPG</p>
+          <div class="card__bottom">
+            <span class="rating">★ 9.0</span>
+          </div>
+        </div>
+
+        <div class="modal" id="game-6">
+          <a href="#catalog" class="modal__overlay"></a>
+          <div class="modal__content">
+            <a href="#catalog" class="modal__close">✕</a>
+            <div class="modal__emoji">🌾</div>
+            <h2 class="modal__title">Stardew Valley</h2>
+            <p class="modal__year">2016 · ConcernedApe</p>
+            <div class="modal__tags">
+              <span class="tag">Симулятор</span>
+              <span class="tag">RPG</span>
+            </div>
+            <div class="modal__rating">★ 9.0</div>
+            <p class="modal__desc">
+              Фермерский симулятор с элементами RPG.
+              Восстанови дедовскую ферму и найди новых друзей.
+            </p>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <p class="hint">❤️ Нажмите на сердечко, чтобы добавить игру в избранное</p>
+
+  </main>
+
+</body>
+</html>

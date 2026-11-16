@@ -1,0 +1,267 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0f1117;
+  --card: #1a1d27;
+  --card-hover: #222634;
+  --accent: #6c5ce7;
+  --text: #e8e9f0;
+  --text-dim: #8a8fa3;
+  --border: #2a2e3d;
+  --gold: #f5b301;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* ---------- Header ---------- */
+.header {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+}
+
+.header__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+
+.logo { font-size: 1.4rem; font-weight: 700; color: var(--text); text-decoration: none; }
+
+.nav { display: flex; gap: 8px; }
+
+.nav__link {
+  color: var(--text-dim); text-decoration: none;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 0.9rem; transition: 0.2s;
+}
+.nav__link:hover { color: var(--text); border-color: var(--accent); background: var(--accent); }
+
+/* ---------- Controls ---------- */
+.controls {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  margin: 24px 0; align-items: center;
+}
+
+.search {
+  flex: 1; min-width: 200px;
+  padding: 12px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 0.95rem;
+  outline: none;
+}
+.search:focus { border-color: var(--accent); }
+
+/* ---------- Жанры (radio + label) ---------- */
+.genres { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.genre-radio { display: none; }
+
+.genre-label {
+  padding: 8px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.genre-label:hover { border-color: var(--accent); color: var(--text); }
+
+.genre-radio:checked + .genre-label {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ============================================================
+   ЧИСТЫЙ CSS-ФИЛЬТР ПО ЖАНРАМ
+   При выборе radio скрываем карточки, у которых нет
+   соответствующего data-genre. Используем :has() на body
+   ============================================================ */
+
+body:has(#g-rpg:checked) .card:not([data-genre*="rpg"]) { display: none; }
+body:has(#g-action:checked) .card:not([data-genre*="action"]) { display: none; }
+body:has(#g-adventure:checked) .card:not([data-genre*="adventure"]) { display: none; }
+body:has(#g-platform:checked) .card:not([data-genre*="platform"]) { display: none; }
+body:has(#g-sim:checked) .card:not([data-genre*="sim"]) { display: none; }
+
+/* ---------- Сетка ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: 0.25s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  background: var(--card-hover);
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(108, 92, 231, 0.25);
+}
+
+.card__cover {
+  height: 150px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem;
+  text-decoration: none;
+  background: linear-gradient(135deg, #2a2e3d, #1a1d27);
+}
+
+.card__body { padding: 14px; flex: 1; display: flex; flex-direction: column; }
+
+.card__title { font-size: 1rem; font-weight: 600; margin-bottom: 6px; line-height: 1.3; }
+
+.card__meta { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 10px; }
+
+.card__bottom { margin-top: auto; }
+
+.rating { color: var(--gold); font-weight: 700; font-size: 0.9rem; }
+
+/* ---------- Избранное (checkbox + label) ---------- */
+.fav-check { display: none; }
+
+.fav-btn {
+  position: absolute;
+  top: 12px; right: 12px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  z-index: 5;
+  transition: 0.2s;
+  filter: grayscale(1) opacity(0.6);
+  user-select: none;
+}
+
+.fav-btn:hover { transform: scale(1.2); filter: none; }
+
+/* Когда чекбокс включён — сердечко красное */
+.fav-check:checked ~ .fav-btn {
+  content: "❤️";
+  filter: none;
+  animation: pop 0.3s;
+}
+
+/* Подменяем emoji: используем псевдоэлемент поверх */
+.fav-check:checked + .fav-btn { font-size: 0; }
+.fav-check:checked + .fav-btn::after {
+  content: "❤️";
+  font-size: 1.3rem;
+}
+
+@keyframes pop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+/* ---------- Модальное окно (только :target) ---------- */
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: 0.2s;
+}
+
+.modal:target { visibility: visible; opacity: 1; }
+
+.modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  text-decoration: none;
+}
+
+.modal__content {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  max-width: 520px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 28px;
+  animation: slideUp 0.25s;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.modal__close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 32px; height: 32px;
+  background: var(--border);
+  border-radius: 50%;
+  color: var(--text);
+  text-decoration: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+.modal__close:hover { background: var(--accent); }
+
+.modal__emoji { font-size: 4rem; text-align: center; margin-bottom: 16px; }
+
+.modal__title { font-size: 1.5rem; margin-bottom: 4px; text-align: center; }
+
+.modal__year { color: var(--text-dim); text-align: center; margin-bottom: 16px; }
+
+.modal__tags { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
+
+.tag {
+  background: var(--border);
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.modal__rating { text-align: center; font-size: 1.3rem; color: var(--gold); font-weight: 700; margin-bottom: 20px; }
+
+.modal__desc { color: var(--text-dim); line-height: 1.7; }
+
+/* ---------- Подсказка ---------- */
+.hint { text-align: center; color: var(--text-dim); font-size: 0.85rem; padding: 20px 0 40px; }
+
+/* ---------- Адаптив ---------- */
+@media (max-width: 600px) {
+  .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+  .card__cover { height: 110px; font-size: 2.2rem; }
+  .header__inner { height: 56px; }
+  .logo { font-size: 1.1rem; }
+  .nav__link { padding: 6px 12px; font-size: 0.8rem; }
+}
