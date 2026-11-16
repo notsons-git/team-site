@@ -119,11 +119,11 @@ body:has(#g-rpg:checked) .card:not([data-genre*="rpg"]) { display: none; }
 Поддерживается всеми современными браузерами: Chrome, Edge, Firefox, Safari.
 Требуется поддержка `:has()` (Chrome 105+, Safari 15.4+, Firefox 121+).
 
-<<<<<<< HEAD
+
 ---
 
 ## 📄 Лицензия
 
 Свободно для личного и учебного использования.
-=======
->>>>>>> 87b107d (edit readme.md)
+
+
